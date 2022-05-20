@@ -47,14 +47,10 @@ void ASCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-    PlayerInputComponent->BindAction("North", IE_Pressed, this, &ASCharacter::OnNorthPressed);
-
-    PlayerInputComponent->BindAction("South", IE_Pressed, this, &ASCharacter::OnSouthPressed);
-
-    PlayerInputComponent->BindAction("East", IE_Pressed, this, &ASCharacter::OnEastPressed);
-
-    PlayerInputComponent->BindAction("West", IE_Pressed, this, &ASCharacter::OnWestPressed);
-
+    PlayerInputComponent->BindAction("North",  IE_Pressed, this, &ASCharacter::OnNorthPressed);
+    PlayerInputComponent->BindAction("South",  IE_Pressed, this, &ASCharacter::OnSouthPressed);
+    PlayerInputComponent->BindAction("East",   IE_Pressed, this, &ASCharacter::OnEastPressed);
+    PlayerInputComponent->BindAction("West",   IE_Pressed, this, &ASCharacter::OnWestPressed);
     PlayerInputComponent->BindAction("Submit", IE_Pressed, this, &ASCharacter::OnSubmitPressed);
 
 }
@@ -123,8 +119,8 @@ void ASCharacter::OnSubmitPressed()
 // --------------------------------------------------------------------
 bool ASCharacter::SpecialCorrectAndUpdateFrameDataUI(const ESpecialMove& Special)
 {
-    FSpecialMovesDatatableRow* data = SpecialsDataMap[Special];
-    TArray<EInputTypes> MotionInputArray = data->DirectionalInputs;
+    FSpecialMovesDatatableRow* Data = SpecialsDataMap[Special];
+    TArray<EInputTypes> MotionInputArray = Data->DirectionalInputs;
 
     int InputsSuceeded = 0;
     int SpecialMoveIndex = 0;
@@ -146,7 +142,7 @@ bool ASCharacter::SpecialCorrectAndUpdateFrameDataUI(const ESpecialMove& Special
                 {
                     FInputData* LastInput = &InputBuffer[x - 1];
                     float TimeBetweenInputs = LastInput->TimeStamp - CurrentInputData->TimeStamp;
-                    if (TimeBetweenInputs <= (FrameLengthInSeconds * data->LinksBetweenInputs))
+                    if (TimeBetweenInputs <= (FrameLengthInSeconds * Data->LinksBetweenInputs))
                     {
                         InputsSuceeded++;
                         SpecialMoveIndex++;

@@ -75,7 +75,6 @@ void USMainWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 void USMainWidget::DisplayNewInput(EInputTypes Input)
 {
     UTextBlock* InputTextblock = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass());
-
     InputTextblock->SetText(InputTypeToText(Input));
 
     if (InputTextblock && !InputTextblock->GetText().IsEmpty())
