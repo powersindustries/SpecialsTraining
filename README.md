@@ -2,7 +2,7 @@
 
 ## _Overview_
 
-![alt text](Github/SpecialsSnapshot.png "Specials")
+![alt text](Content/Assets/SpecialsSnapshot.png "Specials")
 
 This project is meant to help fighting game players practice their special move inputs. Special move inputs can be hard for many players, so this project aims to help people practice and see where to improve their inputs.
 
