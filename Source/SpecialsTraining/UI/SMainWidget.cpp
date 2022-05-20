@@ -152,6 +152,12 @@ void USMainWidget::OnStartSpecialButton()
     ClearInputsButton->SetIsEnabled(false);
     SetEnabledForSpecialsButtons(false);
 
+    ASCharacter* Player = Cast<ASCharacter>(UGameplayStatics::GetPlayerCharacter(this, 0));
+    if (Player)
+    {
+        Player->bAcceptInputs = false;
+    }
+
     GetWorld()->GetTimerManager().SetTimer(CountdownTimerHandle, this, &USMainWidget::OnCountdownCompleted, CountdownTime, false);
 
 }
@@ -172,6 +178,7 @@ void USMainWidget::OnCountdownCompleted()
     ASCharacter* Player = Cast<ASCharacter>(UGameplayStatics::GetPlayerCharacter(this, 0));
     if (Player)
     {
+        Player->bAcceptInputs = true;
         Player->InputBuffer.Empty();
     }
 

@@ -28,6 +28,8 @@ ASCharacter::ASCharacter()
     {
         SpecialsDatatable = SpecialsDatatableObject.Object;
     }
+
+    bAcceptInputs = true;
 }
 
 
@@ -36,7 +38,6 @@ ASCharacter::ASCharacter()
 void ASCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 
@@ -169,6 +170,11 @@ bool ASCharacter::SpecialCorrectAndUpdateFrameDataUI(const ESpecialMove& Special
 // --------------------------------------------------------------------
 void ASCharacter::ManageNewInputs(EInputTypes Input, EButtonState State, float TimeStamp)
 {
+    if (!bAcceptInputs)
+    {
+        return;
+    }
+
     if (State == EButtonState::ePressed)
     {
         FInputData InputData;

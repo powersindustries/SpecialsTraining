@@ -96,10 +96,10 @@ private:
 
     bool bShowCountdownTimer = false;
     bool bShowInputTimer     = false;
-    
+
     FTimerHandle CountdownTimerHandle;
     FTimerHandle InputTimerHandle;
-    
+
     float DisplayCountDownTracker;
     float InputCountDownTracker;
 

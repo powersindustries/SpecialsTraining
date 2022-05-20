@@ -54,6 +54,8 @@ public:
 
 public:
 
+    bool bAcceptInputs;
+
 	ESpecialMove SpecialMove;
 
     TArray<FSpecialMovesDatatableRow*> SpecialsData;
